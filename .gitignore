@@ -54,6 +54,7 @@ coverage.xml
 local_settings.py
 
 # Flask stuff:
+migrations/
 instance/
 .webassets-cache
 
