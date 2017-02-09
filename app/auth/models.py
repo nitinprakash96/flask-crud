@@ -65,3 +65,23 @@ class Department(db.Model):
 
 	def __repr__(self):
 		return '<Department: {}>'.format(self.name)
+
+class Role(db.Model):
+	"""
+	Creates a Role table
+	"""
+
+	__tablename__ = 'roles'
+
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(60), unique=True)
+	description = db.Column(db.String(200))
+	employee_id = db.Column(db.Integer, db.ForeignKey('employees.id'))
+	employee = db.relationship('Employee',
+								backref=db.backref('employee_roles', lazy='dynamic'))
+	dept_id = db.Column(db.Integer, db.ForeignKey('departments.id'))
+	department = db.relationship('Department',
+								backref=db.backref('departments', lazy='dynamic'))
+
+	def __repr__(self):
+		return '<Role: {}>'.format(self.name)
