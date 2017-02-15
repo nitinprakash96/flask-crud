@@ -55,8 +55,8 @@ def logout():
 	return redirect(url_for('auth.login'))
 
 @home.route('/')
-	def homepage():
-		return render_template('home/index.html', title="Welcome")
+def homepage():
+	return render_template('home/index.html', title="Welcome")
 
 
 @home.route('/dashboard')
